@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahanaj Khan - Software Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2a6496;
+            --secondary-color: #3498db;
+            --accent-color: #1e4976;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --light-gray: #f1f1f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+            border: 4px solid white;
+        }
+
+        .profile-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 16px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--light-gray);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .timeline-content {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-content h4 {
+            font-weight: 400;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .timeline-content .location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .timeline-content p {
+            margin-top: 0.5rem;
+        }
+
+        .timeline-content ul {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 180px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-content .date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background-color: #e9ecef;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .education-header h3 {
+            color: var(--primary-color);
+        }
+
+        .education-header .date {
+            color: #666;
+        }
+
+        .education-details {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details .location {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Achievements Section */
+        .achievements-list {
+            padding-left: 1.5rem;
+        }
+
+        .achievements-list li {
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .profile-text h1 {
+                font-size: 2rem;
+            }
+
+            .profile-text h2 {
+                font-size: 1.2rem;
+            }
+
+            nav ul li a {
+                padding: 0.8rem 1rem;
+            }
+
+            .timeline-content {
+                padding: 1rem;
+            }
+
+            .education-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header id="home">
+        <div class="profile-container">
+            <div class="profile-img">
+               <!-- // <i class="fas fa-user"></i> -->
+                <img id="uploadedImage" src="WhatsApp Image 2025-05-02 at 19.03.34_1e91ee2d.jpg" alt="Profile Picture"
+                    style="width: 100%; height: 100%; border-radius: 50%;">
+            </div>
+            <div class="profile-text">
+                <h1>Shahanaj Khan</h1>
+                <h2>Software Engineer</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9829447537</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Khanshahanaj621@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Rajasthan, India</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/sahanajkhan" target="https://github.com/sahanajkhan"><i
+                            class="fab fa-github"></i></a>
+                    <a href="http://www.linkedin.com/in/shahanaj-khan"
+                        target="http://www.linkedin.com/in/shahanaj-khan"><i class="fab fa-linkedin"></i></a>
+                    <a href="shahanaj.23cse454@rtu.ac.in" target="shahanaj.23cse454@rtu.ac.in"><i
+                            class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I am a dynamic software engineer with experience in full-stack web development, specializing in C++.
+                    I focus on creating optimized, scalable solutions and thrive in collaborative problem-solving
+                    environments. My technical expertise, coupled with leadership experiences in various projects,
+                    positions me as a valuable asset in any innovative technology team.</p>
+                <p>Currently pursuing a Bachelor of Technology in Computer Science and Engineering at Rajasthan
+                    Technical University Kota, I am passionate about leveraging technology to solve real-world problems.
+                    My diverse experience in different projects and internships has equipped me with a well-rounded
+                    skill set in software development.</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>C++ Intern</h3>
+                        <h4>Encriyptex</h4>
+                        <span class="date">May 2024 - June 2024</span>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Not specified</span>
+                        </div>
+                        <p>A company focused on software development and technology solutions.</p>
+                        <ul>
+                            <li>Developed three projects using C++: a to-do list, a calculator, and a phone directory
+                            </li>
+                            <li>Enhanced skills in data management, UI, and algorithm implementation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Reckon Hackathon Finalist</h3>
+                        <h4>JIET Jodhpur</h4>
+                        <span class="date">2025</span>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jodhpur, Rajasthan, India</span>
+                        </div>
+                        <p>A prestigious hackathon focusing on innovative technological solutions.</p>
+                        <ul>
+                            <li>Our team excelled and advanced to the final round level</li>
+                            <li>Managed software development aspects of the project</li>
+                            <li>Created compelling PowerPoint presentations for effective communication</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Smart India Hackathon Participant</h3>
+                        <h4>RTU, Kota</h4>
+                        <span class="date">September 2023 - October 2023</span>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kota, Rajasthan, India</span>
+                        </div>
+                        <p>A national initiative to solve pressing problems in various sectors.</p>
+                        <ul>
+                            <li>Participated in SIH 2023 at college level, managing software development</li>
+                            <li>Created compelling PowerPoint presentations and led the team</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Workshop Participant</h3>
+                        <h4>Robotics Club RTU</h4>
+                        <span class="date">October 2023</span>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kota, Rajasthan, India</span>
+                        </div>
+                        <p>A student organization focused on robotics and technical skill development.</p>
+                        <ul>
+                            <li>Gained hands-on knowledge in creating and simulating PCBs</li>
+                            <li>Enhanced technical skills through practical experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">
+                            <i class="fas fa-code"></i>
+                            C++
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fab fa-python"></i>
+                            Python
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fab fa-js"></i>
+                            JavaScript
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">
+                            <i class="fab fa-html5"></i>
+                            HTML
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fab fa-css3-alt"></i>
+                            CSS
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fab fa-node-js"></i>
+                            Node.js
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fab fa-react"></i>
+                            React Native
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">
+                            <i class="fab fa-git-alt"></i>
+                            Git
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-cloud"></i>
+                            Google Cloud
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-database"></i>
+                            MongoDB
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">
+                            <i class="fas fa-robot"></i>
+                            Robotics
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-microchip"></i>
+                            PCB
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-brain"></i>
+                            Machine Learning
+                        </div>
+                        <div class="skill-tag">
+                            <i class="fas fa-file-powerpoint"></i>
+                            PowerPoint
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Aavataar-project</h3>
+                        <span class="date">Python Project</span>
+                        <p>Python project to develop an AI Avatar that generates creative image content.</p>
+                        <ul>
+                            <li>Creating a personalized AI Avatar project using Machine Learning techniques</li>
+                            <li>Team-based collaboration</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Alu-muni Builder</h3>
+                        <span class="date">Web Development Project</span>
+                        <p>Website connecting alumni and students for better networking and support.</p>
+                        <ul>
+                            <li>Developed a website connecting alumni and students using HTML, CSS, and JS for frontend,
+                                and Node.js, Express, and MongoDB for backend</li>
+                            <li>Successfully handled backend logic and database integration</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Research on Delay Introduction in ML Networks</h3>
+                        <span class="date">Research Project</span>
+                        <p>Independent research exploring time delays within neural networks.</p>
+                        <ul>
+                            <li>Explored the concept of introducing time delays within neural networks using resistors
+                                and capacitors</li>
+                            <li>Researched how controlled delays could potentially reduce the complexity of neural
+                                networks by using fewer hidden layers while preserving accuracy and performance</li>
+                            <li>Demonstrated interest in optimizing AI models both structurally and computationally</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Neural Networks</span>
+                            <span class="project-tag">Research</span>
+                            <span class="project-tag">AI Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>C++ Internship Projects</h3>
+                        <span class="date">Programming Projects</span>
+                        <p>Multiple practical applications created during C++ internship.</p>
+                        <ul>
+                            <li>Developed a to-do list, a calculator, and a phone directory using C++</li>
+                            <li>Demonstrated fundamental programming concepts</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">C++</span>
+                            <span class="project-tag">Data Structures</span>
+                            <span class="project-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Dr.dost Telemedicine Project</h3>
+                        <span class="date">Healthcare Technology Project</span>
+                        <p>Project aimed at improving healthcare accessibility.</p>
+                        <ul>
+                            <li>Designed a telemedicine website to connect doctors and patients in rural areas</li>
+                            <li>Responsible for frontend development</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Frontend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="education-header">
+                    <h3>Bachelor of Technology in Computer Science and Engineering</h3>
+                    <span class="date">August 2023 - June 2027</span>
+                </div>
+                <div class="education-details">
+                    <h4>Rajasthan Technical University Kota</h4>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kota, Rajasthan, India</span>
+                    </div>
+                </div>
+                <p>Currently pursuing my bachelor's degree with a focus on computer science and engineering concepts.
+                </p>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <ul class="achievements-list">
+                <li>
+                    <h3>Reckon Hackathon Finalist 2025 | JIET Jodhpur</h3>
+                    <p>Participated in Reckon 2025, where our team excelled at the final round level. I managed the
+                        software development and created compelling PowerPoint presentations.</p>
+                </li>
+                <li>
+                    <h3>Smart India Hackathon 2023 | RTU, Kota</h3>
+                    <p>Participated in SIH 2023, where our team excelled at the college level. I managed the software
+                        development and created compelling PowerPoint presentations.</p>
+                </li>
+                <li>
+                    <h3>Achievement in Software Development and Team Leadership</h3>
+                    <p>Successfully developed multiple applications showcasing my programming skills and leading a team
+                        in a national hackathon.</p>
+                </li>
+                <li>
+                    <h3>Technical Skills Strength</h3>
+                    <p>Demonstrated proficiency in full-stack development, particularly in modern frameworks and tools.
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>Khanshahanaj621@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+91 9829447537</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="http://www.linkedin.com/in/shahanaj-khan">http://www.linkedin.com/in/shahanaj-khan</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Rajasthan, India</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Shahanaj Khan. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+
+                // Update active state
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navHeight = document.querySelector('nav').offsetHeight;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight - 100;
+                const sectionHeight = section.offsetHeight;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
